@@ -39,7 +39,15 @@ public class Program {
 		//System.out.println("Pronto Removido");
 		//O que eh monitorado: Obj que se acabou do inserir ou que se procuro mas ainda nao feche o em.close()
 		
+		//4) Paso: Removendo dados do DB: Sempre temos que colocar uma transacao quando nao eh uma simple consulta
+		em.getTransaction().begin();
+		Pessoa p = em.find(Pessoa.class, 2);
+		em.remove(p);
+		em.getTransaction().commit();
+		System.out.println("Pronto Removido!");
 		
+		
+		//Fechando o EM e EMF
 		em.close();
 		emf.close();
 		
