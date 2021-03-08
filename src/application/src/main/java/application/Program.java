@@ -18,12 +18,23 @@ public class Program {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemplo-jpa");
 		EntityManager em = emf.createEntityManager();
 		
-        em.getTransaction().begin();
-		em.persist(p1);
-		em.persist(p2);
-		em.persist(p3);
-		em.getTransaction().commit();
-		System.out.println("Pronto");
+        //1) Paso: Salvar base de dados
+		//em.getTransaction().begin();
+		//em.persist(p1);
+		//em.persist(p2);
+		//em.persist(p3);
+		//em.getTransaction().commit();
+		//System.out.println("Pronto");
+		
+		
+		//2) Paso: Procura uma pessoa por ID no DB
+		Pessoa p = em.find(Pessoa.class, 2); //no id: 2
+		System.out.println("Procuando pesso no id: 2 ");
+		System.out.println(p);
+		
+		
+		em.close();
+		emf.close();
 		
 
 	}
